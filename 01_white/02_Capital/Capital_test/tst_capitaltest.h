@@ -43,7 +43,7 @@ public:
     {
         return c.About(country);
     }
-    static std::vector<std::string> Dump(Capital &c){
+    static std::string Dump(Capital &c){
         return c.Dump();
     }
     static void Query(Capital &c,
@@ -313,8 +313,8 @@ TEST_F(CapitalTest, Dump)
     CapitalTest::ChangeCapital(c, "Russia", "Moscow");
     CapitalTest::ChangeCapital(c, "China", "Pekin");
     {
-        std::vector<std::string> actual = CapitalTest::Dump(c);
-        std::vector<std::string> expected{"Pekin", "Tongo", "Moscow"};
+        std::string actual = CapitalTest::Dump(c);
+        std::string expected{"China/Pekin Ghana/Tongo Russia/Moscow"};
         EXPECT_EQ(expected, actual);
     }
 }

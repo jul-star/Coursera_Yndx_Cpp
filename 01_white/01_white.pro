@@ -3,4 +3,6 @@ TEMPLATE = subdirs
 SUBDIRS += \
     01_anagram \
     02_Capital \
-    tmp
+    03_UniqueString \
+    tmp \
+    week_3

@@ -1,12 +1,15 @@
-#ifndef UNIQUESTRING_H
-#define UNIQUESTRING_H
+#pragma once
+#include <string>
+#include <vector>
 
-#include "UniqueString_global.h"
+namespace white {
 
-class UNIQUESTRING_EXPORT UniqueString
+class UniqueString
 {
 public:
     UniqueString();
+    static size_t CountUnique(std::vector<std::string> const  &v);
+    static std::vector<std::string> ReadInput(std::istream &os);
 };
+}
 
-#endif // UNIQUESTRING_H
