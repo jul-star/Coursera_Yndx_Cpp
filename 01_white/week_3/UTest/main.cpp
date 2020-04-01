@@ -1,4 +1,6 @@
-#include "tst_sort_01_test.h"
+#include "tst_wt_w3_ex_01.h"
+#include "tst_wt_w3_input.h"
+#include <tst_wt_w3_ex_02.h>
 
 #include <gtest/gtest.h>
 

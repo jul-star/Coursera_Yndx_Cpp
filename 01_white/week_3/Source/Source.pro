@@ -25,10 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Sort_01.cpp
+    wt_w3_Input.cpp
 
 HEADERS += \
-    Sort_01.h
+    wt_w3_Input.h \
+    wt_w3_ex_01.h \
+    wt_w3_ex_02.h
 
 # Default rules for deployment.
 unix {
