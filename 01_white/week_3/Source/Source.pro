@@ -29,8 +29,8 @@ SOURCES += \
 
 HEADERS += \
     wt_w3_Input.h \
-    wt_w3_ex_01.h \
-    wt_w3_ex_02.h
+    wt_w3_e01.h \
+    wt_w3_e02.h
 
 # Default rules for deployment.
 unix {

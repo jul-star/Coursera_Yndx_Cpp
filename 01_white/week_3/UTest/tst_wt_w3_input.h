@@ -9,7 +9,18 @@ using namespace white::w3;
 using namespace testing;
 
 namespace white::w3::ts {
-TEST(Input, ReadVector_test)
+class wt_w3_Input:public ::testing::Test
+{
+public:
+
+
+    // Test interface
+private:
+    void TestBody() override;
+};
+void wt_w3_Input::TestBody(){}
+
+TEST_F(wt_w3_Input, ReadVector_test)
 {
     std::stringstream ss;
     {

@@ -7,8 +7,9 @@ CONFIG += thread
 CONFIG -= qt
 
 HEADERS += \
-    tst_wt_w3_ex_01.h \
-    tst_wt_w3_ex_02.h \
+    ToTest.h \
+    tst_wt_w3_e01.h \
+    tst_wt_w3_e02.h \
     tst_wt_w3_input.h
 
 SOURCES += \

@@ -2,13 +2,23 @@
 
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
-#include <wt_w3_ex_02.h>
+#include <wt_w3_e02.h>
 
 using namespace testing;
 using namespace white::w3;
 
 namespace white::w3::ts  {
-TEST(wt_w3_ex_02, Sort_01)
+class wt_w3_e02:public ::testing::Test{
+public:
+    wt_w3_e02(){}
+
+    // Test interface
+private:
+    void TestBody() override;
+};
+void wt_w3_e02::TestBody(){}
+
+TEST_F(wt_w3_e02, Sort_01)
 {
     std::vector<std::string> actual{"q", "A"};
     ex_02(actual);
@@ -17,7 +27,7 @@ TEST(wt_w3_ex_02, Sort_01)
 }
 
 
-TEST(wt_w3_ex_02, Sort_02)
+TEST_F(wt_w3_e02, Sort_02)
 {
     std::vector<std::string> actual{"a", "C", "b"};
     ex_02(actual);
