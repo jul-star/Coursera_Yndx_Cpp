@@ -2,17 +2,17 @@
 
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
-#include <../Capital/Capital.h>
+#include "Capital.h"
 
 using namespace testing;
 using namespace white;
 
 namespace ts {
-class CapitalTest: public testing::Test
+class wt_w2_e02: public testing::Test
 {
 public:
-    CapitalTest(){}
-    virtual ~CapitalTest() override {}
+    wt_w2_e02(){}
+    virtual ~wt_w2_e02() override {}
     static size_t CountryCapitalSize(Capital &c)
     {
         return c.CountryCapital.size();
@@ -62,42 +62,42 @@ private:
     void TestBody() override{}
 };
 
-TEST_F(CapitalTest, Empty)
+TEST_F(wt_w2_e02, Empty)
 {
     Capital c;
-    EXPECT_EQ(CapitalTest::CountryCapitalSize(c), 0);
+    EXPECT_EQ(wt_w2_e02::CountryCapitalSize(c), 0);
 }
 
-TEST_F(CapitalTest, Split)
+TEST_F(wt_w2_e02, Split)
 {
     Capital c;
     {
         std::string s{"Hello world."};
-        std::vector<std::string> actual = CapitalTest::Split(c, s);
+        std::vector<std::string> actual = wt_w2_e02::Split(c, s);
         std::vector<std::string> expected{"Hello", "world."};
         EXPECT_EQ(expected, actual);
     }
     {
         std::string s{"Hello"};
-        std::vector<std::string> actual = CapitalTest::Split(c, s);
+        std::vector<std::string> actual = wt_w2_e02::Split(c, s);
         std::vector<std::string> expected{"Hello"};
         EXPECT_EQ(expected, actual);
     }
     {
         std::string s{""};
-        std::vector<std::string> actual = CapitalTest::Split(c, s);
+        std::vector<std::string> actual = wt_w2_e02::Split(c, s);
         std::vector<std::string> expected{};
         EXPECT_EQ(expected, actual);
     }
     {
         std::string s{"a b c d e f"};
-        std::vector<std::string> actual = CapitalTest::Split(c, s);
+        std::vector<std::string> actual = wt_w2_e02::Split(c, s);
         std::vector<std::string> expected{"a", "b", "c", "d", "e", "f"};
         EXPECT_EQ(expected, actual);
     }
 }
 
-TEST_F(CapitalTest, RunQueries_1)
+TEST_F(wt_w2_e02, RunQueries_1)
 {
     Capital c;
     std::vector<std::string> input{
@@ -108,7 +108,7 @@ TEST_F(CapitalTest, RunQueries_1)
         "CHANGE_CAPITAL USSR Moscow",
         "DUMP"
     };
-    std::vector<std::string> actual = CapitalTest::RunQueries(c, input);
+    std::vector<std::string> actual = wt_w2_e02::RunQueries(c, input);
     std::vector<std::string> expected{
         "Introduce new country RussianEmpire with capital Petrograd",
         "Country RussianEmpire with capital Petrograd has been renamed to RussianRepublic",
@@ -120,7 +120,7 @@ TEST_F(CapitalTest, RunQueries_1)
     EXPECT_EQ(expected, actual);
 }
 
-TEST_F(CapitalTest, RunQueries_2)
+TEST_F(wt_w2_e02, RunQueries_2)
 {
     Capital c;
     std::vector<std::string> input{
@@ -149,7 +149,7 @@ TEST_F(CapitalTest, RunQueries_2)
         "DUMP",
         "RENAME USSR USSR"
     };
-    std::vector<std::string> actual = CapitalTest::RunQueries(c, input);
+    std::vector<std::string> actual = wt_w2_e02::RunQueries(c, input);
     std::vector<std::string> expected{
         "Incorrect rename, skip",
         "Country FarFarAway doesn't exist",
@@ -183,137 +183,137 @@ TEST_F(CapitalTest, RunQueries_2)
     }
 }
 
-TEST_F(CapitalTest, Query)
+TEST_F(wt_w2_e02, Query)
 {
     Capital c;
     {
         std::vector<std::string> input{"CHANGE_CAPITAL", "Ghana", "Mongo"};
         std::vector<std::string> out;
-        CapitalTest::Query(c, input, out);
-        std::map<std::string, std::string> actual = CapitalTest::GetCountryCapital(c);
+        wt_w2_e02::Query(c, input, out);
+        std::map<std::string, std::string> actual = wt_w2_e02::GetCountryCapital(c);
         std::map<std::string, std::string> expected {{"Ghana", "Mongo"}};
         EXPECT_EQ(expected, actual);
     }
     {
         std::vector<std::string> input{"RENAME", "Ghana", "Hana"};
         std::vector<std::string> out;
-        CapitalTest::Query(c, input, out);
-        std::map<std::string, std::string> actual = CapitalTest::GetCountryCapital(c);
+        wt_w2_e02::Query(c, input, out);
+        std::map<std::string, std::string> actual = wt_w2_e02::GetCountryCapital(c);
         std::map<std::string, std::string> expected {{"Hana", "Mongo"}};
         EXPECT_EQ(expected, actual);
     }
     {
         std::vector<std::string> input{"ABOUT", "Hana"};
         std::vector<std::string> out;
-        CapitalTest::Query(c, input, out);
+        wt_w2_e02::Query(c, input, out);
         std::vector<std::string> actual(out);
-        std::vector<std::string> expected {"Mongo"};
+        std::vector<std::string> expected {"Country Hana has capital Mongo"};
         EXPECT_EQ(expected, actual);
     }
     {
         std::vector<std::string> input{"DUMP"};
         std::vector<std::string> out;
-        CapitalTest::Query(c, input, out);
+        wt_w2_e02::Query(c, input, out);
         std::vector<std::string> actual(out);
-        std::vector<std::string> expected {"Mongo"};
+        std::vector<std::string> expected {"Hana/Mongo"};
         EXPECT_EQ(expected, actual);
     }
 
 }
-TEST_F(CapitalTest, ChangeCapital)
+TEST_F(wt_w2_e02, ChangeCapital)
 {
     Capital c;
     {
-        CapitalTest::ChangeCapital(c, "Ghana", "Mongo");
-        std::map<std::string, std::string> actual = CapitalTest::GetCountryCapital(c);
+        wt_w2_e02::ChangeCapital(c, "Ghana", "Mongo");
+        std::map<std::string, std::string> actual = wt_w2_e02::GetCountryCapital(c);
         std::map<std::string, std::string> expected{{"Ghana", "Mongo"}};
         EXPECT_EQ(expected, actual);
     }
     {
-        CapitalTest::ChangeCapital(c, "Ghana", "Bongo");
-        std::map<std::string, std::string> actual = CapitalTest::GetCountryCapital(c);
+        wt_w2_e02::ChangeCapital(c, "Ghana", "Bongo");
+        std::map<std::string, std::string> actual = wt_w2_e02::GetCountryCapital(c);
         std::map<std::string, std::string> expected{{"Ghana", "Bongo"}};
         EXPECT_EQ(expected, actual);
     }
     {
-        CapitalTest::ChangeCapital(c, "Ghana", "Bongo");
-        std::map<std::string, std::string> actual = CapitalTest::GetCountryCapital(c);
+        wt_w2_e02::ChangeCapital(c, "Ghana", "Bongo");
+        std::map<std::string, std::string> actual = wt_w2_e02::GetCountryCapital(c);
         std::map<std::string, std::string> expected{{"Ghana", "Bongo"}};
         EXPECT_EQ(expected, actual);
     }
     {
-        CapitalTest::ChangeCapital(c, "Ghana", "Tongo");
-        std::map<std::string, std::string> actual = CapitalTest::GetCountryCapital(c);
+        wt_w2_e02::ChangeCapital(c, "Ghana", "Tongo");
+        std::map<std::string, std::string> actual = wt_w2_e02::GetCountryCapital(c);
         std::map<std::string, std::string> expected{{"Ghana", "Tongo"}};
         EXPECT_EQ(expected, actual);
     }
 }
 
-TEST_F(CapitalTest, RenameCountry)
+TEST_F(wt_w2_e02, RenameCountry)
 {
     Capital c;
-    CapitalTest::ChangeCapital(c, "Ghana", "Tongo");
+    wt_w2_e02::ChangeCapital(c, "Ghana", "Tongo");
     {
-        CapitalTest::RenameCountry(c, "Ghana", "Hana");
-        std::map<std::string, std::string> actual = CapitalTest::GetCountryCapital(c);
+        wt_w2_e02::RenameCountry(c, "Ghana", "Hana");
+        std::map<std::string, std::string> actual = wt_w2_e02::GetCountryCapital(c);
         std::map<std::string, std::string> expected{{"Hana", "Tongo"}};
         EXPECT_EQ(expected, actual);
     }
     {
-        CapitalTest::RenameCountry(c, "Hana", "Zana");
-        std::map<std::string, std::string> actual = CapitalTest::GetCountryCapital(c);
+        wt_w2_e02::RenameCountry(c, "Hana", "Zana");
+        std::map<std::string, std::string> actual = wt_w2_e02::GetCountryCapital(c);
         std::map<std::string, std::string> expected{{"Zana", "Tongo"}};
         EXPECT_EQ(expected, actual);
     }
     {
-        CapitalTest::RenameCountry(c, "Zana", "Ghana");
-        std::map<std::string, std::string> actual = CapitalTest::GetCountryCapital(c);
+        wt_w2_e02::RenameCountry(c, "Zana", "Ghana");
+        std::map<std::string, std::string> actual = wt_w2_e02::GetCountryCapital(c);
         std::map<std::string, std::string> expected{{"Ghana", "Tongo"}};
         EXPECT_EQ(expected, actual);
     }
 }
 
-TEST_F(CapitalTest, About)
+TEST_F(wt_w2_e02, About)
 {
     Capital c;
-    CapitalTest::ChangeCapital(c, "Ghana", "Tongo");
-    CapitalTest::ChangeCapital(c, "Russia", "Moscow");
-    CapitalTest::ChangeCapital(c, "China", "Pekin");
+    wt_w2_e02::ChangeCapital(c, "Ghana", "Tongo");
+    wt_w2_e02::ChangeCapital(c, "Russia", "Moscow");
+    wt_w2_e02::ChangeCapital(c, "China", "Pekin");
     {
-        std::string actual = CapitalTest::About(c,"Ghana");
-        std::string expected{"Tongo"};
+        std::string actual = wt_w2_e02::About(c,"Ghana");
+        std::string expected{"Country Ghana has capital Tongo"};
         EXPECT_EQ(expected, actual);
     }
     {
-        std::string actual = CapitalTest::About(c,"Russia");
-        std::string expected{"Moscow"};
+        std::string actual = wt_w2_e02::About(c,"Russia");
+        std::string expected{"Country Russia has capital Moscow"};
         EXPECT_EQ(expected, actual);
     }
     {
-        std::string actual = CapitalTest::About(c,"China");
-        std::string expected{"Pekin"};
+        std::string actual = wt_w2_e02::About(c,"China");
+        std::string expected{"Country China has capital Pekin"};
         EXPECT_EQ(expected, actual);
     }
     {
-        std::string actual = CapitalTest::About(c,"Ura");
-        std::string expected{};
+        std::string actual = wt_w2_e02::About(c,"Ura");
+        std::string expected{"Country Ura doesn't exist"};
         EXPECT_EQ(expected, actual);
     }
     {
-        std::string actual = CapitalTest::About(c,"");
-        std::string expected{};
+        std::string actual = wt_w2_e02::About(c,"");
+        std::string expected{"Country  doesn't exist"};
         EXPECT_EQ(expected, actual);
     }
 }
 
-TEST_F(CapitalTest, Dump)
+TEST_F(wt_w2_e02, Dump)
 {
     Capital c;
-    CapitalTest::ChangeCapital(c, "Ghana", "Tongo");
-    CapitalTest::ChangeCapital(c, "Russia", "Moscow");
-    CapitalTest::ChangeCapital(c, "China", "Pekin");
+    wt_w2_e02::ChangeCapital(c, "Ghana", "Tongo");
+    wt_w2_e02::ChangeCapital(c, "Russia", "Moscow");
+    wt_w2_e02::ChangeCapital(c, "China", "Pekin");
     {
-        std::string actual = CapitalTest::Dump(c);
+        std::string actual = wt_w2_e02::Dump(c);
         std::string expected{"China/Pekin Ghana/Tongo Russia/Moscow"};
         EXPECT_EQ(expected, actual);
     }

@@ -1,2 +1,4 @@
 #pragma once
-#include "tst_wt_w2_e01.h"
+#include "tst_anagramtest.h"
+#include "tst_capitaltest.h"
+#include "tst_uniquestringtest.h"

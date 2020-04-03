@@ -4,13 +4,13 @@ TEMPLATE = lib
 TARGET=WhiteWeek03
 
 CONFIG += c++1z
-LIB_DIR = /../WhiteWeek03_Lib
+#LIB_DIR = /../WhiteWeek03_Lib
 
-build_pass:CONFIG(debug, debug|release){
-DESTDIR=$$PWD$$LIB_DIR
-} else {
-DESTDIR=$$PWD$$LIB_DIR
-}
+#build_pass:CONFIG(debug, debug|release){
+#DESTDIR=$$PWD$$LIB_DIR
+#} else {
+#DESTDIR=$$PWD$$LIB_DIR
+#}
 
 
 # The following define makes your compiler emit warnings if you use

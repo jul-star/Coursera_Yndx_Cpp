@@ -6,7 +6,10 @@ CONFIG -= qt
 SOURCES += \
         main.cpp
 
-win32: LIBS += -L$$PWD/../UniqueString_Lib/ -lUniqueString
 
-INCLUDEPATH += $$PWD/../UniqueString_Lib
-DEPENDPATH += $$PWD/../UniqueString_Lib
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Source/release/ -lWhiteWeek02
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Source/debug/ -lWhiteWeek02
+
+INCLUDEPATH += $$PWD/../Source
+DEPENDPATH += $$PWD/../Source

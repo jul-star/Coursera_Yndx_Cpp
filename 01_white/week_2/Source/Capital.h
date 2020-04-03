@@ -4,7 +4,7 @@
 #include <map>
 
 namespace ts {
-class CapitalTest;
+class wt_w2_e02;
 }
 namespace white {
 class Capital
@@ -36,7 +36,7 @@ private:
     std::vector<std::string> GetInput();
 
 private:
-    friend class ts::CapitalTest;
+    friend class ts::wt_w2_e02;
 };
 }
 

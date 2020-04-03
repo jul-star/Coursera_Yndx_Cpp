@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
-#include <../UniqueString/UniqueString.h>
+#include "UniqueString.h"
 #include <vector>
 #include <string>
 #include <sstream>
@@ -11,14 +11,15 @@
 using namespace std;
 using namespace white;
 using namespace testing;
+class wt_w2_e03: public Test{
 
-TEST(UniqueStringTest, UniqueStringTest)
-{
-    EXPECT_EQ(1, 1);
-    ASSERT_THAT(0, Eq(0));
-}
+    // Test interface
+private:
+    void TestBody() override;
+};
+void wt_w2_e03::TestBody(){}
 
-TEST(UniqueStringTest, ReadInput)
+TEST_F(wt_w2_e03, ReadInput)
 {
     stringstream s;
     s << 2 << "Hello" << ' ' << "world";
@@ -29,7 +30,7 @@ TEST(UniqueStringTest, ReadInput)
     EXPECT_EQ(expected, actual);
 }
 
-TEST(UniqueStringTest, CountUnique)
+TEST_F(wt_w2_e03, CountUnique)
 {
     vector<string> input{"Hello", "world", "Hello"};
     size_t actual = UniqueString::CountUnique(input);

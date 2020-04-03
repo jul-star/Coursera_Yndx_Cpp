@@ -10,8 +10,13 @@ HEADERS += \
     ToTest.h \
     tst_anagramtest.h \
     tst_capitaltest.h \
-    tst_uniquestringtest.h \
-    tst_wt_w2_e01.h
+    tst_uniquestringtest.h
 
 SOURCES += \
         main.cpp
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Source/release/ -lWhiteWeek02
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Source/debug/ -lWhiteWeek02
+
+INCLUDEPATH += $$PWD/../Source
+DEPENDPATH += $$PWD/../Source
