@@ -10,6 +10,8 @@ HEADERS += \
     ToTest.h \
     tst_wt_w3_e01.h \
     tst_wt_w3_e02.h \
+    tst_wt_w3_e03.h \
+    tst_wt_w3_e04.h \
     tst_wt_w3_input.h
 
 SOURCES += \

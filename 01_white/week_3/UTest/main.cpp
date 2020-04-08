@@ -1,4 +1,3 @@
-#pragma once
 #include "ToTest.h"
 
 #include <gtest/gtest.h>
