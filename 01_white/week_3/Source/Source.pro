@@ -32,7 +32,8 @@ HEADERS += \
     wt_w3_e01.h \
     wt_w3_e02.h \
     wt_w3_e03.h \
-    wt_w3_e04.h
+    wt_w3_e04.h \
+    wt_w3_e05.h
 
 # Default rules for deployment.
 unix {

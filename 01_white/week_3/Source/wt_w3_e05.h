@@ -3,6 +3,7 @@
 #include <string>
 #include <utility>
 #include <sstream>
+#include <vector>
 
 using namespace std;
 namespace white::w3
@@ -14,7 +15,7 @@ private:
     map<int, string> last;
 public:
     /*!
-   * \brief добавить факт изменения имени на first_name в год year
+   * \brief добавить факт изменения имени в год
    * \param year
    * \param first_name
    */
@@ -22,7 +23,7 @@ public:
         first[year]= first_name;
     }
     /*!
-   * \brief добавить факт изменения фамилии на last_name в год year
+   * \brief добавить факт изменения фамилии в год
    * \param year
    * \param last_name
    */
@@ -33,10 +34,18 @@ public:
     /*!
    * \brief GetFullName
    * \param year
-   * \return получить имя и фамилию по состоянию на конец года year
+   * \return получить имя и фамилию по состоянию на конец года
    */
     string GetFullName(int year) {
         return FullName(LatestRecord(year, first), LatestRecord(year, last));
+    }
+    /*!
+     * \brief получить все имена и фамилии по состоянию на конец года
+     * \param year
+     * \return
+     */
+    string GetFullNameWithHistory(int year) {
+        return {};
     }
 private:
     string FullName(string const &fname, string const & lname)
