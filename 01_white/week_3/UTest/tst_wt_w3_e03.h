@@ -9,8 +9,7 @@ using namespace white::w3;
 
 namespace white::w3::ts  {
 class wt_w3_e03: public Test{
-public:
-    wt_w3_e03(){}
+
 };
 
 

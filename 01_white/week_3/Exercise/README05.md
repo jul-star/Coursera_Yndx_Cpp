@@ -1,6 +1,6 @@
 #### Задание по программированию: Имена и фамилии — 2 ####
 
-Дополните класс из предыдущей задачи «Имена и фамилии — 1» методом *GetFullNameWithHistory*:
+Дополните класс из задачи «README04» методом *GetFullNameWithHistory*:
 
 ```objectivec
 class Person {

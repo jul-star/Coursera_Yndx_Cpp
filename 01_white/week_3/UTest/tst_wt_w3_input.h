@@ -9,16 +9,9 @@ using namespace white::w3;
 using namespace testing;
 
 namespace white::w3::ts {
-class wt_w3_Input:public ::testing::Test
+class wt_w3_Input: public Test
 {
-public:
-
-
-    // Test interface
-private:
-    void TestBody() override;
 };
-void wt_w3_Input::TestBody(){}
 
 TEST_F(wt_w3_Input, ReadVector_1)
 {

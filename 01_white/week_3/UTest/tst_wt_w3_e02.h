@@ -10,13 +10,8 @@ using namespace white::w3;
 namespace white::w3::ts  {
 class wt_w3_e02:public ::testing::Test{
 public:
-    wt_w3_e02(){}
 
-    // Test interface
-private:
-    void TestBody() override;
 };
-void wt_w3_e02::TestBody(){}
 
 TEST_F(wt_w3_e02, Sort_01)
 {
