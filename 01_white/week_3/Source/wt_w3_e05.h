@@ -4,6 +4,7 @@
 #include <utility>
 #include <sstream>
 #include <vector>
+#include <set>
 
 using namespace std;
 namespace white::w3
@@ -22,6 +23,7 @@ public:
     void ChangeFirstName(int year, const string& first_name) {
         if(LatestRecord(year, first) != first_name){
             first[year]= first_name;
+            //            ClearRepetitiveRecords(year, first, first_name);
         }
     }
     /*!
@@ -32,6 +34,7 @@ public:
     void ChangeLastName(int year, const string& last_name) {
         if(LatestRecord(year, last) != last_name){
             last[year]= last_name;
+            //            ClearRepetitiveRecords(year, last, last_name);
         }
     }
 
@@ -55,6 +58,38 @@ public:
         return res;
     }
 private:
+    vector<string> CleanDuplicates(vector<string> v)
+    {
+        set<string> s(v.begin(), v.end());
+        vector<string> res(s.size());
+        size_t c{0};
+        for(auto const &i: v )
+        {
+            if (s.find(i) != s.end()){
+                res[c]=i;
+                s.erase(i);
+                ++c;
+            }
+        }
+        return res;
+    }
+
+    vector<string> CleanRepetitives(vector<string> v)
+    {
+        vector<string> res;
+        string prev{};
+        for(auto const &i: v )
+        {
+            if (prev ==i){
+                prev = i;
+                continue;
+            }
+            res.push_back(i);
+            prev = i;
+        }
+        return res;
+    }
+
     string GetHistory(int year, map<int, string> const & m){
         vector<string> v;
         for(map<int, string>::const_iterator i = m.cbegin();
@@ -62,7 +97,8 @@ private:
         {
             v.push_back(i->second);
         }
-        return BuildHistory(v);
+        vector<string> res = CleanRepetitives(v);
+        return BuildHistory(res);
     }
     string BuildName(string const & f, string const & l){
         if (f.empty() && l.empty())        {
@@ -141,6 +177,15 @@ private:
             }
         }
         return result;
+    }
+
+    void ClearRepetitiveRecords(int year, map<int, string> & m,  string name){
+        auto it=m.find(year);
+        ++it;
+        if (it->second == name)
+        {
+            m.erase(it);
+        }
     }
 };
 
