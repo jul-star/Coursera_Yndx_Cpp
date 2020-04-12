@@ -4,6 +4,7 @@ TEMPLATE = lib
 TARGET=WhiteWeek03
 
 CONFIG += c++1z
+#Linking as an internal lib.
 #LIB_DIR = /../WhiteWeek03_Lib
 
 #build_pass:CONFIG(debug, debug|release){
@@ -34,7 +35,8 @@ HEADERS += \
     wt_w3_e03.h \
     wt_w3_e04.h \
     wt_w3_e05.h \
-    wt_w3_e06.h
+    wt_w3_e06.h \
+    wt_w3_e07.h
 
 # Default rules for deployment.
 unix {

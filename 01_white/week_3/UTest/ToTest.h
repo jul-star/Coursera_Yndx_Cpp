@@ -5,4 +5,5 @@
 #include "tst_wt_w3_e04.h"
 #include "tst_wt_w3_e05.h"
 #include "tst_wt_w3_e06.h"
+#include "tst_wt_w3_e07.h"
 #include "tst_wt_w3_input.h"
