@@ -13,6 +13,7 @@ HEADERS += \
     tst_wt_w3_e03.h \
     tst_wt_w3_e04.h \
     tst_wt_w3_e05.h \
+    tst_wt_w3_e06.h \
     tst_wt_w3_input.h
 
 SOURCES += \
