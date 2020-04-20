@@ -21,12 +21,13 @@ TEST_F(wt_w4_e02, t1)
     stringstream ss;
     double actual{0.0};
     double expected{0.0};
-    ss << ComputeImageWeight(params, image);
+    double tmp = ComputeImageWeight(params, image);
+    ss << tmp;
     ss >> actual;
     expected = 36.0;
     EXPECT_DOUBLE_EQ(expected, actual) << " Expected: "<<expected << ", Actual: " << actual;
 
-    ss << ComputeQualityByWeight(params, image, 46);
+    actual = ComputeQualityByWeight(params, image, 46);
     expected = 20.0;
     EXPECT_DOUBLE_EQ(expected, actual) << " Expected: "<<expected << ", Actual: " << actual;
 }
