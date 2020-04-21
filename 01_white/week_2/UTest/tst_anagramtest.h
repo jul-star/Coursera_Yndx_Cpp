@@ -1,12 +1,11 @@
-#ifndef TST_ANAGRAMTEST_H
-#define TST_ANAGRAMTEST_H
-
+#pragma once
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
 #include <Anagram.h>
 
-using namespace white;
-using namespace testing;
+using namespace ::white;
+using namespace ::testing;
+namespace white::w2::ts  {
 class wt_w2_e01: public Test{
 
     // Test interface
@@ -55,5 +54,4 @@ TEST_F(wt_w2_e01, CheckCountWords_PERMUTATION)
     EXPECT_EQ(expected, actual);
 }
 
-
-#endif // TST_ANAGRAMTEST_H
+}

@@ -19,6 +19,7 @@ SOURCES += \
 
 
 HEADERS += \
+    Stub.h
 
 
 

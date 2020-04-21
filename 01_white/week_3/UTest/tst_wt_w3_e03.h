@@ -31,7 +31,7 @@ TEST_F(wt_w3_e03, Sort_02)
     ss.AddString("C");
     ss.AddString("b");
     std::vector<std::string> actual = ss.GetSortedStrings();
-    std::vector<std::string> expected{"a", "b" , "C"};
+    std::vector<std::string> expected{ "C", "a", "b"};
     EXPECT_EQ(expected, actual);
 }
 TEST_F(wt_w3_e03, Sort_03)

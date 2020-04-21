@@ -7,7 +7,7 @@
 
 using namespace ::std;
 
-namespace white::w4 {
+namespace white::w4::e02 {
 
 struct Image {
     double quality{0.0};
@@ -94,15 +94,6 @@ double ComputeQualityByWeight(const Params& params,
     Function function = MakeWeightFunction(params, image);
     function.Invert();
     return function.Apply(weight);
-}
-
-int main()
-{
-    Image image = {10, 2, 6};
-    Params params = {4, 2, 6};
-    cout << ComputeImageWeight(params, image) << endl;
-    cout << ComputeQualityByWeight(params, image, 46) << endl;
-    return 0;
 }
 
 }

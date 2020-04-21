@@ -8,9 +8,10 @@
 #include <sstream>
 #include <istream>
 
-using namespace std;
-using namespace white;
-using namespace testing;
+using namespace ::std;
+using namespace ::white;
+using namespace ::testing;
+
 class wt_w2_e03: public Test{
 
     // Test interface

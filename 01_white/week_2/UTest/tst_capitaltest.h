@@ -4,10 +4,10 @@
 #include <gmock/gmock-matchers.h>
 #include "Capital.h"
 
-using namespace testing;
-using namespace white;
+using namespace ::testing;
+using namespace ::white;
 
-namespace ts {
+namespace white::w2::ts  {
 class wt_w2_e02: public testing::Test
 {
 public:

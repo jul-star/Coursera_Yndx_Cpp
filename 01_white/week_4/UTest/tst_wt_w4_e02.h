@@ -6,10 +6,10 @@
 #include <sstream>
 
 using namespace ::std;
-using namespace ::white::w4;
+using namespace ::white::w4::e02;
 using namespace ::testing;
 
-namespace white::w4::ts  {
+namespace white::w4::e2::ts  {
 class wt_w4_e02: public ::testing::Test{
 
 };

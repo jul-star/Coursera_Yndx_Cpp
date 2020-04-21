@@ -3,12 +3,14 @@
 #include <vector>
 #include <map>
 
-namespace ts {
+namespace white::w2::ts {
 class wt_w2_e02;
 }
 namespace white {
 class Capital
 {
+private:
+    friend class white::w2::ts::wt_w2_e02;
 private:
     std::map<std::string, std::string> CountryCapital;
 public:
@@ -34,9 +36,6 @@ private:
     std::vector<std::string> Split(std::string const & s);
     void Print(const std::vector<std::string> &result);
     std::vector<std::string> GetInput();
-
-private:
-    friend class ts::wt_w2_e02;
 };
 }
 
