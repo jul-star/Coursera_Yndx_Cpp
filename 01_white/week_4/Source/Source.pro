@@ -21,7 +21,8 @@ SOURCES += \
 HEADERS += \ \
     wt_w4_e01.h \
     wt_w4_e02.h \
-    wt_w4_e03.h
+    wt_w4_e03.h \
+    wt_w4_e04.h
 
 
 

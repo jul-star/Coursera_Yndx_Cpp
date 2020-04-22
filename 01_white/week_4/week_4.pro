@@ -12,4 +12,5 @@ DISTFILES += \
     Exercise\README05.md \
     Exercise\README06.md \
     Exercise\README07.md \
-    Exercise\README08.md
+    Exercise\README08.md \
+    Data\wt_w4_e04_input.txt \
