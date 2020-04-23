@@ -11,7 +11,8 @@ HEADERS += \
     tst_wt_w4_e01.h \
     tst_wt_w4_e02.h \
     tst_wt_w4_e03.h \
-    tst_wt_w4_e04.h
+    tst_wt_w4_e04.h \
+    tst_wt_w4_e05.h
 
 
 SOURCES += \
