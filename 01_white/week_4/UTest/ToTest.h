@@ -4,3 +4,5 @@
 #include "tst_wt_w4_e03.h"
 #include "tst_wt_w4_e04.h"
 #include "tst_wt_w4_e05.h"
+#include "tst_wt_w4_e06.h"
+#include "tst_wt_w4_e07.h"

@@ -10,8 +10,8 @@
 
 using namespace ::std;
 
-namespace white::w4::e05 {
-string task1(string & path){
+namespace white::w4::e06 {
+string ConvertFile2Table(string & path){
     ifstream  fl{};
     try{
         fl.open(path);
@@ -19,15 +19,21 @@ string task1(string & path){
     {
         return {};
     }
-    double d{0};
+    int rows{0};
+    fl >> rows;
+    fl.ignore(1);
+    int cols{0};
+    fl >> cols;
     stringstream ss(stringstream::in | stringstream::out);
-    while (true) {
-        fl >> d;
-        if(fl.eof()){
-            break;
+    int i{0};
+    for(int r=0;r<rows; ++r)
+    {
+        for(int c=0; c<cols; ++c){
+            fl >> i;
+            fl.ignore(1);
+            ss << setw(10) << i;
         }
-        double f = round(d*1E+3)/1E+3;
-        ss << fixed << showpoint << setprecision(3) << f << endl; // ios_base::floatpoint
+        ss << endl;
     }
     fl.close();
     return ss.str();

@@ -16,4 +16,4 @@ DISTFILES += \
     Data\wt_w4_e04_input.txt \
     Data\wt_w4_e05_01.txt \
     Data\wt_w4_e05_02.txt \
-
+    Data\wt_w4_e06.txt \
