@@ -16,7 +16,22 @@ public:
 
 TEST_F(wt_w4_e07, task1)
 {
-
+    string FileName{path};
+    FileName.append("wt_w4_e07.txt");
+    ifstream fl;
+    fl.open(FileName);
+    if(!fl.good())
+    {
+        FAIL() << "Can't find a test file.";
+    }
+    vector<string> actual = RunRequestOnStudentInfo(fl);
+    vector<string> expected{
+        "Ivan Ivanov",
+        "3.3.1903",
+        "bad request"
+    };
+    fl.close();
+    EXPECT_EQ(expected,actual);
 }
 
 }
