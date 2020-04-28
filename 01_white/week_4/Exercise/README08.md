@@ -75,8 +75,8 @@ r.numerator = 6; // Нарушен инвариант несократимост
 **Гарантируется, что ни в одном из тестов, на которых будет тестироваться ваша реализация, не будет знаменателя, равного нулю.**
 
 Шаблон программы:
-
-[rational_interface.cpp](https://github.com/VulpesCorsac/Coursera-Basics-of-C-plus-plus-development/blob/master/1%20-%20White%20belt/Week%204/Tasks/8%20-%20Class%20Rational/Solution/1%20-%20rational_interface.cpp)
+(D:\Lib\C++\Videos\Yandex C++modern-development\Tasks\Coursera-Modern-C-plus-plus-development-master\1 - White belt\Week 4\Tasks\8 - Class Rational\Solution\)
+[rational_interface.cpp]
 
 ##### Часть 2 #####
 Реализуйте для класса *Rational* операторы ==, + и - так,
@@ -90,7 +90,7 @@ if (r == Rational(7, 12)) {
 ```
 Шаблон программы:
 
-[rational_eq_add_sub.cpp](https://github.com/VulpesCorsac/Coursera-Basics-of-C-plus-plus-development/blob/master/1%20-%20White%20belt/Week%204/Tasks/8%20-%20Class%20Rational/Solution/2%20-%20rational_eq_add_sub.cpp)
+[rational_eq_add_sub.cpp]
 
 ##### Часть 3 #####
 Аналогично предыдущей части, реализуйте операторы * и /. Например, следующий код должен быть валидным:
@@ -104,7 +104,7 @@ if (r == Rational(2, 3)) {
 
 Шаблон программы:
 
-[rational_mult_div.cpp](https://github.com/VulpesCorsac/Coursera-Basics-of-C-plus-plus-development/blob/master/1%20-%20White%20belt/Week%204/Tasks/8%20-%20Class%20Rational/Solution/3%20-%20rational_mult_div.cpp)
+[rational_mult_div.cpp]
 
 ##### Часть 4 #####
 В этой части вам нужно реализовать операторы ввода и вывода для класса *Rational*.

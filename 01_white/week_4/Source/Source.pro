@@ -25,7 +25,8 @@ HEADERS += \ \
     wt_w4_e04.h \
     wt_w4_e05.h \
     wt_w4_e06.h \
-    wt_w4_e07.h
+    wt_w4_e07.h \
+    wt_w4_e08.h
 
 
 
