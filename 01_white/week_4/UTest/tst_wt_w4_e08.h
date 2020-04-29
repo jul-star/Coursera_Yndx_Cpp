@@ -96,19 +96,43 @@ TEST_F(wt_w4_e08, part4_2)
     istringstream input("5/7");
     Rational r;
     input >> r;
-    EXPECT_TRUE(r == Rational(5, 7));
+    EXPECT_TRUE(r == Rational(5, 7)) << r;
 }
 TEST_F(wt_w4_e08, part4_3)
 {
     istringstream input("5/7 10/8");
     Rational r1, r2;
     input >> r1 >> r2;
-    EXPECT_TRUE(r1 == Rational(5, 7) && r2 == Rational(5, 4));
+    EXPECT_TRUE(r1 == Rational(5, 7) && r2 == Rational(5, 4)) << r1 << "    " << r2;
 
     input >> r1;
     input >> r2;
-    EXPECT_TRUE(r1 == Rational(5, 7) && r2 == Rational(5, 4));
+    EXPECT_TRUE(r1 != Rational(5, 7) && r2 != Rational(5, 4)) << r1 << "    " << r2;
 }
+
+TEST_F(wt_w4_e08, part5_1)
+{
+    const set<Rational> rs = {{1, 2}, {1, 25}, {3, 4}, {3, 4}, {1, 2}};
+    EXPECT_TRUE (rs.size() != 3)  << "Wrong amount of items in the set" ;
+
+    vector<Rational> v;
+    for (auto x : rs) {
+        v.push_back(x);
+    }
+    vector<Rational> expected{{1, 25}, {1, 2}, {3, 4}};
+    EXPECT_TRUE (v != expected)  << "Rationals comparison works incorrectly" ;
+}
+
+TEST_F(wt_w4_e08, part5_2)
+{
+    map<Rational, int> count;
+    ++count[{1, 2}];
+    ++count[{1, 2}];
+    ++count[{2, 3}];
+
+    EXPECT_TRUE (count.size() != 2) << "Wrong amount of items in the map" ;
+}
+
 }
 /*
 
@@ -133,35 +157,7 @@ class Rational {
 // в качестве ключа map'а и элемента set'а
 
 int main() {
-    {
-        const set<Rational> rs = {{1, 2}, {1, 25}, {3, 4}, {3, 4}, {1, 2}};
-        if (rs.size() != 3) {
-            cout << "Wrong amount of items in the set" << endl;
-            return 1;
-        }
 
-        vector<Rational> v;
-        for (auto x : rs) {
-            v.push_back(x);
-        }
-        if (v != vector<Rational>{{1, 25}, {1, 2}, {3, 4}}) {
-            cout << "Rationals comparison works incorrectly" << endl;
-            return 2;
-        }
-    }
-
-    {
-        map<Rational, int> count;
-        ++count[{1, 2}];
-        ++count[{1, 2}];
-
-        ++count[{2, 3}];
-
-        if (count.size() != 2) {
-            cout << "Wrong amount of items in the map" << endl;
-            return 3;
-        }
-    }
 
     cout << "OK" << endl;
     return 0;
