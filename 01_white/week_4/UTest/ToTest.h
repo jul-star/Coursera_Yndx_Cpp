@@ -10,3 +10,4 @@
 #include "tst_wt_w4_e09.h"
 #include "tst_wt_w4_e10.h"
 #include "tst_wt_w4_e11.h"
+#include "tst_wt_w4_e12.h"

@@ -29,7 +29,8 @@ HEADERS += \ \
     wt_w4_e08.h \
     wt_w4_e09.h \
     wt_w4_e10.h \
-    wt_w4_e11.h
+    wt_w4_e11.h \
+    wt_w4_e12.h
 
 
 
