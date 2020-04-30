@@ -5,19 +5,19 @@
 
 using namespace ::std;
 
-namespace white::w4::e08
+namespace white::w4::e10
 {
-class Rational
+class Rational10
 {
 private:
     int vNumerator{0};
     int vDenominator{1};
 public:
-    Rational() {
+    Rational10() {
         Initialize(0,1);
     }
 
-    Rational(int numerator, int denominator)
+    Rational10(int numerator, int denominator)
     {
         Initialize(numerator, denominator);
     }
@@ -30,58 +30,62 @@ public:
         return vDenominator;
     }
 
-    friend Rational operator+(Rational const & l, Rational const & r)
+    friend Rational10 operator+(Rational10 const & l, Rational10 const & r)
     {
-        return Rational(l.Numerator()*r.Denominator() + r.Numerator()*l.Denominator(), l.Denominator()*r.Denominator());
+        return Rational10(l.Numerator()*r.Denominator() + r.Numerator()*l.Denominator(), l.Denominator()*r.Denominator());
     }
-    friend Rational operator-(Rational const & l, Rational const & r)
+    friend Rational10 operator-(Rational10 const & l, Rational10 const & r)
     {
-        return Rational(l.Numerator()*r.Denominator() - r.Numerator()*l.Denominator(), l.Denominator()*r.Denominator());
+        return Rational10(l.Numerator()*r.Denominator() - r.Numerator()*l.Denominator(), l.Denominator()*r.Denominator());
     }
-    friend Rational operator*(Rational const & l, Rational const & r)
+    friend Rational10 operator*(Rational10 const & l, Rational10 const & r)
     {
-        return Rational(l.Numerator() * r.Numerator(), l.Denominator()*r.Denominator());
+        return Rational10(l.Numerator() * r.Numerator(), l.Denominator()*r.Denominator());
     }
-    friend Rational operator/(Rational const & l, Rational const & r)
+    friend Rational10 operator/(Rational10 const & l, Rational10 const & r)
     {
-        return Rational(l.Numerator()*r.Denominator() , l.Denominator()* r.Numerator());
+        if (l.Denominator()* r.Numerator() == 0)
+        {
+            throw domain_error("Division by zero");
+        }
+        return Rational10(l.Numerator()*r.Denominator() , l.Denominator()* r.Numerator());
     }
 
-    friend ostream & operator<<(ostream & os, Rational const & r)
+    friend ostream & operator<<(ostream & os, Rational10 const & r)
     {
         os << r.Numerator() << "/" << r.Denominator();
         return os;
     }
-    friend istream & operator>>(istream & is, Rational & r)
+    friend istream & operator>>(istream & is, Rational10 & r)
     {
         string s{};
         is >> s;
         if (s.empty()){
-            r = Rational();
+            r = Rational10();
             return is;
         }
         size_t delimiter = s.find('/');
         if (delimiter == string::npos)
         {
-            r = Rational();
+            r = Rational10();
             return is;
         }
         int n = BuildInt(0, delimiter, s);
         int d = BuildInt(delimiter+1, s.size(), s);
-        Rational tmp(n,d);
+        Rational10 tmp(n,d);
         r = tmp;
         return is;
     }
 
-    friend bool operator!=(Rational const &l, Rational const &r)
+    friend bool operator!=(Rational10 const &l, Rational10 const &r)
     {
         return (l.vNumerator!=r.vNumerator || l.vDenominator!=r.vDenominator);
     }
-    friend bool operator<(Rational const &l, Rational const &r)
+    friend bool operator<(Rational10 const &l, Rational10 const &r)
     {
         return (l.vNumerator*r.vDenominator < r.vNumerator*l.vDenominator);
     }
-    friend bool operator==(Rational const & l, Rational const & r)
+    friend bool operator==(Rational10 const & l, Rational10 const & r)
     {
         return (l.Numerator() == r.Numerator() && l.Denominator() == r.Denominator());
     }
@@ -108,6 +112,10 @@ private:
     }
 
     void Initialize(int numerator, int denominator){
+        if (denominator == 0)
+        {
+            throw invalid_argument("Invalid argument");
+        }
         int d = GCD(numerator, denominator);
         if (numerator % d == 0 && denominator % d == 0)
         {

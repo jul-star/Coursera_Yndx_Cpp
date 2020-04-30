@@ -8,9 +8,9 @@ CONFIG -= qt
 
 HEADERS += \
     ToTest.h \
-    tst_anagramtest.h \
-    tst_capitaltest.h \
-    tst_uniquestringtest.h
+#    tst_anagramtest.h \
+#    tst_capitaltest.h \
+#    tst_uniquestringtest.h
 
 SOURCES += \
         main.cpp

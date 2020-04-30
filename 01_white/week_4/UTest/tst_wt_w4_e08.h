@@ -113,14 +113,14 @@ TEST_F(wt_w4_e08, part4_3)
 TEST_F(wt_w4_e08, part5_1)
 {
     const set<Rational> rs = {{1, 2}, {1, 25}, {3, 4}, {3, 4}, {1, 2}};
-    EXPECT_TRUE (rs.size() != 3)  << "Wrong amount of items in the set" ;
+    EXPECT_TRUE (rs.size() == 3)  << "Wrong amount of items in the set: " << rs.size() ;
 
     vector<Rational> v;
     for (auto x : rs) {
         v.push_back(x);
     }
     vector<Rational> expected{{1, 25}, {1, 2}, {3, 4}};
-    EXPECT_TRUE (v != expected)  << "Rationals comparison works incorrectly" ;
+    EXPECT_TRUE (v == expected)  << "Rationals comparison works incorrectly" ;
 }
 
 TEST_F(wt_w4_e08, part5_2)
@@ -130,160 +130,8 @@ TEST_F(wt_w4_e08, part5_2)
     ++count[{1, 2}];
     ++count[{2, 3}];
 
-    EXPECT_TRUE (count.size() != 2) << "Wrong amount of items in the map" ;
+    EXPECT_TRUE (count.size() == 2) << "Wrong amount of items in the map: " << count.size() ;
 }
 
 }
-/*
 
-######################################################
-
-#####################################################
-
-########################################
-#include <iostream>
-#include <map>
-#include <set>
-#include <vector>
-using namespace std;
-
-class Rational {
-    // Вставьте сюда реализацию класса Rational из первой части
-};
-
-// Вставьте сюда реализацию operator == для класса Rational из второй части
-
-// Реализуйте для класса Rational оператор(ы), необходимые для использования его
-// в качестве ключа map'а и элемента set'а
-
-int main() {
-
-
-    cout << "OK" << endl;
-    return 0;
-}
-###########################################
-#include <algorithm>
-#include <stdlib.h>
-#include <math.h>
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <sstream>
-#include <stdio.h>
-#include <string>
-#include <vector>
-#include <set>
-#include <map>
-#include <utility>
-
-using namespace std;
-
-class Rational {
-public:
-    Rational(int new_numerator = 0, int new_denominator = 1) {
-        this->numerator = new_numerator;
-        this->denominator = new_denominator;
-
-        if (this->denominator == 0)
-            this->numerator = 0;
-
-        if (this->numerator == 0)
-            this->denominator = 1;
-
-        if (denominator < 0) {
-            this->numerator *= -1;
-            this->denominator *= -1;
-        }
-
-        Reduce();
-    }
-
-    int Numerator() const {
-        return this->numerator;
-    }
-
-    int Denominator() const {
-        return this->denominator;
-    }
-
-    Rational invert() const {
-        return Rational(this->denominator, this->numerator);
-    }
-
-private:
-    int numerator;
-    int denominator;
-
-    int GCD(int a, int b) {
-        while (b) {
-            a %= b;
-            swap(a, b);
-        }
-        return a;
-    }
-
-    int LCM(int a, int b) {
-        return a * b / GCD(a, b);
-    }
-
-    void Reduce() {
-        int gcd = GCD(abs(this->numerator), abs(this->denominator));
-
-        this->numerator   /= gcd;
-        this->denominator /= gcd;
-
-        return;
-    }
-};
-
-bool operator == (const Rational& lhs, const Rational& rhs) {
-    return ((lhs.Numerator()   == rhs.Numerator()  ) &&
-            (lhs.Denominator() == rhs.Denominator()));
-}
-
-bool operator != (const Rational& lhs, const Rational& rhs) {
-    return (!(lhs == rhs));
-}
-
-bool operator < (const Rational& lhs, const Rational& rhs) {
-    return (lhs.Numerator() * rhs.Denominator() < rhs.Numerator() * lhs.Denominator());
-}
-
-bool operator > (const Rational& lhs, const Rational& rhs) {
-    return (lhs.Numerator() * rhs.Denominator() > rhs.Numerator() * lhs.Denominator());
-}
-
-Rational operator + (const Rational& lhs, const Rational& rhs) {
-    return Rational(lhs.Numerator() * rhs.Denominator() + rhs.Numerator() * lhs.Denominator(), lhs.Denominator() * rhs.Denominator());
-}
-
-Rational operator - (const Rational& lhs, const Rational& rhs) {
-    return Rational(lhs.Numerator() * rhs.Denominator() - rhs.Numerator() * lhs.Denominator(), lhs.Denominator() * rhs.Denominator());
-}
-
-Rational operator * (const Rational& lhs, const Rational& rhs) {
-    return Rational(lhs.Numerator() * rhs.Numerator(), lhs.Denominator() * rhs.Denominator());
-}
-
-Rational operator / (const Rational& lhs, const Rational& rhs) {
-    return lhs * rhs.invert();
-}
-
-ostream& operator << (ostream& stream, const Rational& rational) {
-    stream << rational.Numerator() << "/" << rational.Denominator();
-    return stream;
-}
-
-istream& operator >> (istream& stream, Rational& rational) {
-    if (stream.tellg() != -1) {
-        int numerator, denominator;
-        stream >> numerator;
-        stream.ignore(1);
-        stream >> denominator;
-        rational = Rational(numerator, denominator);
-    }
-    return stream;
-}
-
-*/
