@@ -42,14 +42,14 @@ string ApplyOperation(Rational10 const &l,char operation, Rational10 const &r)
         ss << (l+r);
     }else if(operation == '-')
     {
-        ss << (l+r);
+        ss << (l-r);
     }else if(operation == '*')
     {
-        ss << (l+r);
+        ss << (l*r);
     }else if(operation == '/')
     {
         try {
-            ss << (l+r);
+            ss << (l/r);
         } catch (domain_error & de) {
             return de.what();
         }

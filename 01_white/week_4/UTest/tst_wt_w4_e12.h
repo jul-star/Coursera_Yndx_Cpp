@@ -50,6 +50,7 @@ TEST_F(wt_w4_e12, Se)
     string actual = TS.GetCurrentTime();
     string expected = "Z";
     EXPECT_EQ(expected, actual) << " expected: " << expected << ", actual: " << actual;
+
     answer = eAnswer::Se;
     actual = TS.GetCurrentTime();
     expected = "Z";
@@ -58,24 +59,21 @@ TEST_F(wt_w4_e12, Se)
 
 TEST_F(wt_w4_e12, Invalid_argument)
 {
+    string catcher{};
     try {
         answer = eAnswer::Ex;
         string actual = TS.GetCurrentTime();
-        FAIL()<<"No exception";
+        catcher.append("No exception");
     } catch (string &st) {
-        EXPECT_EQ(st, string("Test"));
-        return ;
+        catcher.append("string: ").append("Test");
     }catch (invalid_argument &ia) {
-        //TODO: we are not here....?
-        EXPECT_EQ(string(ia.what()), string("Test"));
-        return ;
+        catcher.append("invalid_argument: ").append(ia.what());
     }catch (exception &ex) {
-        string sex{ex.what()};
-        //TODO: sex is "std::exception" ???
-        EXPECT_EQ(sex, string("Test"));
-        return ;
+        catcher.append("std::exception:");
     }
-    FAIL()<< "Wrong exception catcher?";
+    //FIXME: Why is std::exception???
+    string expected("std::exception:");
+    EXPECT_EQ(catcher, expected) << catcher;
 }
 
 }

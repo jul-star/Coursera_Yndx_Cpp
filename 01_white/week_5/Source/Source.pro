@@ -19,7 +19,7 @@ SOURCES += \
 
 
 HEADERS += \
-    Stub.h
+    wt_w5_e01.h
 
 
 

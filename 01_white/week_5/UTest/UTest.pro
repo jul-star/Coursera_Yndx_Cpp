@@ -7,7 +7,8 @@ CONFIG += thread
 CONFIG -= qt
 
 HEADERS += \
-    ToTest.h \
+    ToTest.h \ \
+    tst_wt_w5_e01.h
 
 
 SOURCES += \
