@@ -19,6 +19,12 @@ int Anagram::CountWords(const std::string &s)
 //        d = (letters-i)
 //        sum += tgamma(letters+1)/(tgamma(i+1)*tgamma(letters-1+1));
 //    }
+    //Wan't compiles with -Werror flag in .pro file!
+//    int i{2'000'000'000};
+//    size_t t{1'000'000'000};
+//    int j = i+t;
+//    bool c = (i<t);
+
     return tgamma(length+1)/tgamma(d+1);
 }
 
