@@ -21,7 +21,8 @@ enum class Lang {
 Напишите функцию _FindMaxRepetitionCount_,
 принимающую базу регионов и определяющую,
 какое максимальное количество повторов она содержит.
-Две записи (объекты типа _Region_) считаются различными, если они отличаются хотя бы одним полем.
+Две записи (объекты типа _Region_) считаются различными,
+если они отличаются хотя бы одним полем.
 
 ```objectivec
 int FindMaxRepetitionCount(const vector<Region>& regions);
@@ -34,27 +35,27 @@ int FindMaxRepetitionCount(const vector<Region>& regions);
 ```objectivec
 int main() {
   cout << FindMaxRepetitionCount({
-      {
+     0 {
           "Moscow",
           "Russia",
           {{Lang::DE, "Moskau"}, {Lang::FR, "Moscou"}, {Lang::IT, "Mosca"}},
           89
-      }, {
+    1  }, {
           "Russia",
           "Eurasia",
           {{Lang::DE, "Russland"}, {Lang::FR, "Russie"}, {Lang::IT, "Russia"}},
           89
-      }, {
+    2  }, {
           "Moscow",
           "Russia",
           {{Lang::DE, "Moskau"}, {Lang::FR, "Moscou"}, {Lang::IT, "Mosca"}},
           89
-      }, {
+     3 }, {
           "Moscow",
           "Russia",
           {{Lang::DE, "Moskau"}, {Lang::FR, "Moscou"}, {Lang::IT, "Mosca"}},
           89
-      }, {
+      4 }, {
           "Russia",
           "Eurasia",
           {{Lang::DE, "Russland"}, {Lang::FR, "Russie"}, {Lang::IT, "Russia"}},
@@ -63,33 +64,33 @@ int main() {
   }) << endl;
   
   cout << FindMaxRepetitionCount({
-      {
+    0  {
           "Moscow",
           "Russia",
           {{Lang::DE, "Moskau"}, {Lang::FR, "Moscou"}, {Lang::IT, "Mosca"}},
           89
-      }, {
+     1 }, {
           "Russia",
           "Eurasia",
           {{Lang::DE, "Russland"}, {Lang::FR, "Russie"}, {Lang::IT, "Russia"}},
           89
-      }, {
+     2 }, {
           "Moscow",
           "Russia",
           {{Lang::DE, "Moskau"}, {Lang::FR, "Moscou deux"}, {Lang::IT, "Mosca"}},
           89
-      }, {
+      3 }, {
           "Moscow",
           "Toulouse",
           {{Lang::DE, "Moskau"}, {Lang::FR, "Moscou"}, {Lang::IT, "Mosca"}},
           89
-      }, {
+      4 }, {
           "Moscow",
           "Russia",
           {{Lang::DE, "Moskau"}, {Lang::FR, "Moscou"}, {Lang::IT, "Mosca"}},
           31
       },
-  }) << endl;
+  }) << endl;  // нет совпадений почему 1?
   
   return 0;
 }

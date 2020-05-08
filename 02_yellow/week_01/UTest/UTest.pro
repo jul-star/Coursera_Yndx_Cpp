@@ -8,8 +8,10 @@ CONFIG -= qt
 
 HEADERS += \
     ToTest.h \
-    tst_yl_w1_e01.h \
-    tst_yl_w1_e02.h
+#    tst_yl_w1_e01.h \
+#    tst_yl_w1_e02.h \
+#    tst_yl_w1_e03.h \
+    tst_yl_w1_e04.h
 
 SOURCES += \
         main.cpp
