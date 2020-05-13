@@ -106,20 +106,20 @@ public:
     }
     TasksInfo GetOldTask(TasksInfo & ti, TasksInfo const & delist)
     {
-        TasksInfo old;
+        TasksInfo Untouched;
         int vOld{0};
         vOld = SubtractOldTask(ti, delist, TaskStatus::NEW);
-        if (vOld != 0) {old[TaskStatus::NEW] = vOld; vOld = 0;}
+        if (vOld != 0) {Untouched[TaskStatus::NEW] = vOld; vOld = 0;}
 
         vOld = SubtractOldTask(ti, delist, TaskStatus::IN_PROGRESS);
-        if (vOld != 0) {old[TaskStatus::IN_PROGRESS] = vOld; vOld = 0;}
+        if (vOld != 0) {Untouched[TaskStatus::IN_PROGRESS] = vOld; vOld = 0;}
 
         vOld = SubtractOldTask(ti, delist, TaskStatus::TESTING);
-        if (vOld != 0) {old[TaskStatus::TESTING] = vOld; vOld = 0;}
+        if (vOld != 0) {Untouched[TaskStatus::TESTING] = vOld; vOld = 0;}
 
         vOld = SubtractOldTask(ti, delist, TaskStatus::DONE);
-        if (vOld != 0) {old[TaskStatus::DONE] = vOld; }
-        return old;
+        if (vOld != 0) {Untouched[TaskStatus::DONE] = vOld; }
+        return Untouched;
     }
 
     void Add(TasksInfo & ti, TasksInfo const & nw, TaskStatus status)
@@ -133,12 +133,12 @@ public:
         }
     }
 
-    void AddTaskWithNewStatus(TasksInfo & ti, TasksInfo const & nw)
+    void AddTaskWithNewStatus(TasksInfo & ti, TasksInfo const & ToUpdate)
     {
-        Add(ti, nw, TaskStatus::NEW);
-        Add(ti, nw, TaskStatus::IN_PROGRESS);
-        Add(ti, nw, TaskStatus::TESTING);
-        Add(ti, nw, TaskStatus::DONE);
+        Add(ti, ToUpdate, TaskStatus::NEW);
+        Add(ti, ToUpdate, TaskStatus::IN_PROGRESS);
+        Add(ti, ToUpdate, TaskStatus::TESTING);
+        Add(ti, ToUpdate, TaskStatus::DONE);
     }
 
     // Обновить статусы по данному количеству задач конкретного разработчика,
@@ -150,19 +150,19 @@ public:
         {
             return {};
         }
-        TasksInfo old;
-        TasksInfo nw;
-        TasksInfo delist;
+        TasksInfo Untouched;
+        TasksInfo Updated;
+        TasksInfo Delist;
         int tasks = task_count;
         if (vPersonTask.find(person) != vPersonTask.end())
         {
-            TasksInfo ti = vPersonTask.find(person)->second;
-            tie(delist, nw) = GetTasksToDelistAndWithNewStatus(ti, tasks);
-            old = GetOldTask(ti, delist);
-            AddTaskWithNewStatus(ti, nw);
+            TasksInfo & ti = vPersonTask.find(person)->second;
+            tie(Delist, Updated) = GetTasksToDelistAndWithNewStatus(ti, tasks);
+            Untouched = GetOldTask(ti, Delist);
+            AddTaskWithNewStatus(ti, Updated);
         }
 
-        return tie<TasksInfo, TasksInfo>(nw, old);
+        return tie<TasksInfo, TasksInfo>(Updated, Untouched);
     }
 };
 
